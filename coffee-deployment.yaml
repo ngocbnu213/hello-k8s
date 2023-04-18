@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: coffee-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: coffee-service
+  template:
+    metadata:
+      labels:
+        app: coffee-service
+    spec:
+      containers:
+      - name: coffee
+        image: ngocbnu213/coffee:latest
+        ports:
+        - containerPort: 8081
